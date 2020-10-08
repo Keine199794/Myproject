@@ -40,6 +40,19 @@ git hint:
 
 ```{r}
 y<-"1234"
+y
 print(y)
 ```
+
+| sex | name | address |
+| --- | --- | --- |
+| 1 | chung 3 | kao |
+
+---
+
+| sex | name | address |
+| :-: | :-: | :-: |
+| 1 | chung 3 | kao |
+
+
 
