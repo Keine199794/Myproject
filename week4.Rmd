@@ -30,8 +30,16 @@ git hint:
 
 ---
 
-1.click to **add**
-1.commit + message
-1.push
+1. click to **add** 
+1. commit + message
+1. push
+
 
 [我是連結](https://www.nkust.edu.tw/)
+
+
+```{r}
+y<-"1234"
+print(y)
+```
+
