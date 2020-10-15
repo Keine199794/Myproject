@@ -1,0 +1,25 @@
+---
+title: "home"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#基本
+
+```{r}
+x<-3
+x1<-c(1,2,3)
+x2<-c(TRUE,FALSE,TRUE)
+```
+```{r}
+x
+```
+```{r}
+x1
+```
+```{r}
+x2
+```
