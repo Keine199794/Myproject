@@ -136,6 +136,64 @@ x2&lt;-c(TRUE,FALSE,TRUE)</code></pre>
 <pre><code>## [1] 1 2 3</code></pre>
 <pre class="r"><code>x2</code></pre>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
+<div class="section level2">
+<h2>統計量</h2>
+<p>c()是一個函數，用來形成一個向量函數。</p>
+<ul>
+<li>length() :長度</li>
+<li>mean() :平均數</li>
+<li>median() :中位數</li>
+<li>var() :變異數</li>
+<li>quantile()<br />
+</li>
+<li>sd() :標準差</li>
+<li>fivenum()</li>
+</ul>
+<pre class="r"><code>x&lt;-c(2,3,4,6,7,4,3,2,9)
+length(x)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>## [1] 4.444444</code></pre>
+<pre class="r"><code>median(x)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>var(x)</code></pre>
+<pre><code>## [1] 5.777778</code></pre>
+<pre class="r"><code>quantile(x)</code></pre>
+<pre><code>##   0%  25%  50%  75% 100% 
+##    2    3    4    6    9</code></pre>
+<pre class="r"><code>sd(x)</code></pre>
+<pre><code>## [1] 2.403701</code></pre>
+<pre class="r"><code>fivenum(x)</code></pre>
+<pre><code>## [1] 2 3 4 6 9</code></pre>
+<pre class="r"><code>range(x)</code></pre>
+<pre><code>## [1] 2 9</code></pre>
+<pre class="r"><code>min(x)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>max(x)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>x&lt;-runif(4000)
+length(x)</code></pre>
+<pre><code>## [1] 4000</code></pre>
+<pre class="r"><code>mean(x)</code></pre>
+<pre><code>## [1] 0.4982952</code></pre>
+<pre class="r"><code>median(x)</code></pre>
+<pre><code>## [1] 0.5013614</code></pre>
+<pre class="r"><code>var(x)</code></pre>
+<pre><code>## [1] 0.08293144</code></pre>
+<pre class="r"><code>quantile(x)</code></pre>
+<pre><code>##           0%          25%          50%          75%         100% 
+## 0.0001176815 0.2438260054 0.5013614357 0.7462761663 0.9996375463</code></pre>
+<pre class="r"><code>sd(x)</code></pre>
+<pre><code>## [1] 0.2879782</code></pre>
+<pre class="r"><code>fivenum(x)</code></pre>
+<pre><code>## [1] 0.0001176815 0.2438056826 0.5013614357 0.7463098338 0.9996375463</code></pre>
+<pre class="r"><code>range(x)</code></pre>
+<pre><code>## [1] 0.0001176815 0.9996375463</code></pre>
+<pre class="r"><code>min(x)</code></pre>
+<pre><code>## [1] 0.0001176815</code></pre>
+<pre class="r"><code>max(x)</code></pre>
+<pre><code>## [1] 0.9996375</code></pre>
+</div>
 </div>
 
 
