@@ -1,6 +1,8 @@
 ---
 title: "home"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -28,13 +30,13 @@ x2
 
 c()是一個函數，用來形成一個向量函數。
 
-length()  
-mean()  
-median()  
-var()  
-quantile()  
-sd()  
-fivenum()  
+- length()  :長度
+- mean()  :平均數
+- median()  :中位數
+- var()  :變異數
+- quantile()  
+- sd() :標準差 
+- fivenum()  
 
 
 ```{r}
@@ -46,6 +48,9 @@ var(x)
 quantile(x)
 sd(x)
 fivenum(x)
+range(x)
+min(x)
+max(x)
 ```
 
 
@@ -59,4 +64,7 @@ var(x)
 quantile(x)
 sd(x)
 fivenum(x)
+range(x)
+min(x)
+max(x)
 ```
