@@ -11,8 +11,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 練習
 
-0.
-隨機產生1到300的號碼，共300
+0.隨機產生1到300的號碼，共300
+#隨機產生1-300個號碼，共200個
+#因為是0-299所以要+1得300，as.integer轉為整數
+#x <- as.integer(runif(號碼中抽幾個)*產生的號碼)+1
 
 ```{r}
 idx<-as.integer(runif(300)*300)+1
@@ -23,16 +25,31 @@ idx<-as.integer(runif(300)*300)+1
 ```{r}
 meta<-rnorm(300,5,2)
 hist(meta)
+
+x1<-sort(meta)
+plot(x1)
+r1 <- rank(meta)
 ```
 
 2.抽樣本100個
 計算這100個樣本的統計量
+
+#40 利用runif產生0~1的亂數100個，因為要產生1~300個數字，所以要將runif()*300，例如:(0~1)*300=0~300
+#42從meta中抽idx
 
 ```{r}
 idx<-as.integer(runif(100)*300)+1
 s<-meta[idx]
 s.sum<-summary(s)
 hist(s)
-print(s.sum[4])
+s.mean<-s.sum[4]
+s.sd<-sd(s)/sqrt(300)
+print("sample mean")
+print(s.mean)
+print("sample sd")
+print(s.sd)
+
+s.conf<-c(-1.96*s.sd,1.96*s.sd)+s.mean
+
 ```
 
