@@ -1,0 +1,38 @@
+---
+title: "Week6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+# 練習
+
+0.
+隨機產生1到300的號碼，共300
+
+```{r}
+idx<-as.integer(runif(300)*300)+1
+```
+
+1.產生亂數300個,平均5，標準差2的母體
+
+```{r}
+meta<-rnorm(300,5,2)
+hist(meta)
+```
+
+2.抽樣本100個
+計算這100個樣本的統計量
+
+```{r}
+idx<-as.integer(runif(100)*300)+1
+s<-meta[idx]
+s.sum<-summary(s)
+hist(s)
+print(s.sum[4])
+```
+
