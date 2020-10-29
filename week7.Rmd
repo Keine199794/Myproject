@@ -1,0 +1,95 @@
+---
+title: "week7"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+員工的薪水分配，嚴重懷疑不是常態分配
+
+100: ->
+/mu<-100
+/sd()<-100
+/se(stander error)
+
+boot strapping
+把我們得到的100個標本，重複抽1000，(每次必須抽100個)然後得到1000個平均
+mu,sd
+ percentile(2.5),mu,percentile(97.5)
+ 
+```{r}
+ 
+ metasample<-rnorm(100,5,2)
+ 
+ rndno<-as.integer(runif(100)*100)+1
+ 
+ smp<-metasample[rndno]
+ 
+```
+ 
+```{r}
+N<-100
+
+metasample<-rnorm(N,5,2)
+
+rndno<-as.integer(runif(N)*N)+1
+
+smp<-metasample[rndno]
+ss<-summary(smp)
+s1<-hist(smp)
+
+```
+
+```{r}
+N<-100
+
+metasample<-rnorm(N,5,2)
+
+rndno<-as.integer(runif(N)*N)+1
+
+smp<-metasample[rndno]
+hist(metasample)
+hist(smp)
+
+```
+ 
+```{r}
+x<-seq(-4,4,length=100)
+dy<-dnorm(x)
+plot(x,dy,type="l",col="blue",lwd=3,lty="dotted",ylim=c(0,2))
+
+py<-pnorm(x)
+lines(x,py,lty="dotted",col="red")
+qy<-qnorm(x)
+lines(x,qy,lty="solid",col="green")
+
+```
+ 
+```{r}
+N<-100
+metasample<-rnorm(N,5,2)
+rndno<-as.integer(runif(N)*N)+1
+smp<-metasample[rndno]
+
+#hist(metasample)
+
+#lx<-seq(min(metasaple),max(metasample),length=100)
+#ly<-dnorm(lx,mean(metasample),sd(metasample))
+
+#sy<-ly*diff(lx)[1]*N #面積 * density
+#lines(lx,sy)
+density(metasample)
+plot(dd)
+```
+ 
+ x<-4
+ if(x<0){
+ print("Negative number")
+ }else{
+ print("zero")
+ }
+ 
