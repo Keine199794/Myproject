@@ -1,0 +1,20 @@
+---
+title: "week8"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+x <- rnorm(400,5,2)
+h <- hist(x,breaks=20,
+         probability=T,
+         col="red",
+         xlab="miles Per Gallon",
+         main="title")
+dx<-seq(-0,10,length=40)
+dy<-dnorm(dx,5,2)
+lines(dx,dy,t="l",col="red")
