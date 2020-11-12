@@ -1,0 +1,113 @@
+---
+title: "week9-3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+標準差佔的信賴區間，百分比
+zecore=1,1個標準差
+
+```{r}
+right<-pnorm(1)
+left<-pnorm(-1)
+right-left
+```
+
+
+```{r}
+right<-pnorm(2)
+left<-pnorm(-2)
+right-left
+```
+
+
+```{r}
+percentbysd<-function(sd){
+right<-pnorm(sd)
+left<-pnorm(-sd)
+return(right-left)
+
+}
+
+percentbysd(2)
+```
+
+```{r}
+x3<-function(arg1,arg2,arg3){
+  rst<-arg1*arg2*arg3
+  return(rst)
+  
+}
+x3(2,3,-1)
+```
+
+我要寫一個函數
+用來過濾-2到+2之間的值
+
+```{r}
+myfilter<-function(x){
+  rst<- x<=2
+  le2<- x[rst]
+  rst2<-le2>=-2
+  xx<-le2[rst2]
+  return(xx)
+}
+x<-rnorm(10)
+myfilter(x)
+```
+
+```r
+myfilter<-function(x,min,max){
+  rst<- x<=max
+  le2<- x[rst]
+  rst2<-le2>=min
+  xx<-le2[rst2]
+  return(xx)
+}
+x<-rnorm(10)
+myfilter(x,-0.2,0.2)
+```
+
+```{r}
+myfilter<-function(x){
+  le2<- x[x<=0.2]
+  
+  xx<-le2[le2>=-0.2]
+  return(xx)
+}
+x<-rnorm(10)
+myfilter(x)
+```
+
+給我一個向量，例如
+x<rpois(30,2)
+找出來向量的偶數
+
+```{r}
+x<-rpois(30,2)
+x[x%%2==0]
+```
+
+```{r}
+x<-rpois(30,2)
+getevent<-function(v){
+  return(v[v%%2==0] )
+}
+x
+getevent(x)
+```
+
+```{r}
+x<-rpois(30,5)
+getevent<-function(v){
+  return(v[v%%5==0] )
+}
+x
+getevent(x)
+```
+

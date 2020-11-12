@@ -14,7 +14,7 @@ which(z_scores==Inf)
 which(z_scores==-Inf)
 
 
-which(z_scores==NA)
+which(z_scores == NA)
 NA==NA
 NA==0
 NA==Inf
