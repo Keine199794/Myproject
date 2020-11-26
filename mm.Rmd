@@ -1,0 +1,41 @@
+---
+title: "mm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+mm <- function(rcnt, ccnt, init){
+  total <- rcnt*ccnt
+  v <- double(total)
+  v[1:total] <-init
+  rst <- matrix(v,rcnt,ccnt)
+  return(rst)
+}
+```
+
+```{r}
+source("mm.R")
+```
+
+
+```{r}
+mm(4,3,2)
+```
+
+:question:1, 下面3個向量變成組成list
+```{r}
+x1 <- runif(3)
+x2 <- runif(3)
+x3 <- runif(3)
+x <- list(x1,x2,x3)
+length(x)  #3個
+xx <- c(x1,x2,x3) 
+length(xx)  #9個
+```
+
+:question:2,計算裡面元素大於0.5
