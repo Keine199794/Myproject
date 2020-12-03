@@ -1,0 +1,52 @@
+---
+title: "week11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+
+```{r}
+mydata <- read.csv("trees91.csv")
+
+mydata$C <- factor(mydata$C)
+mydata$N <- factor(mydata$N)
+
+summary(mydata)
+barplot(table(mydata$C))
+```
+
+
+
+```{r}
+mydatal <- read.csv("trees91.csv",encoding="UTF-8")
+mydatal$`中文` <- factor(mydatal$`中文`)
+
+table(mydatal$`中文`)
+```
+
+```{r}
+paste0("a","b") # "a"+"b" = "ab"
+paste0("a","b",collapse="------")
+paste0(c("a","b"),c(1,2))
+paste0(c("a","b"),c(1,2),collapse="<---->")
+print("------")
+paste("a","b",sep="") == paste0("a","b")
+```
+
+```{r}
+paste0("a","b") # "a"+"b" = "a`sep`b",sep=""
+paste0("a","b",collapse="------")
+paste0(c("a","b"),c(1,2))
+paste0(c("a","b"),c(1,2),collapse="<---->")
+print("------")
+paste("a","b") # "a"+"b" = "a`sep`b",sep=""
+```
+
+- paste0 是 paste的簡化版 , paste裡面的參數sep預設為""
+- paste0() == paste( ,sep="")
