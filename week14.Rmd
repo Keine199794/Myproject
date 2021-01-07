@@ -1,0 +1,31 @@
+---
+
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+install.packages("DT")
+
+```{r}
+library(DT)
+fm <- read.csv(file=)
+```
+
+```{r}
+library(DT)
+ms<-installed.packages()
+#View(ms)
+datatable(ms)
+```
+```{r}
+fm3<fm
+[,1:3]
+```
+
+
