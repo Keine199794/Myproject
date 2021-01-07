@@ -1,0 +1,160 @@
+---
+title: "week17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+#test
+某公司宣稱生產的輪軸，直徑為5CM，標準差為1CM，如何確定是否為真？
+```{r}
+x<-c(3.801895,5.214785,5.445979,4.293448,7.401404,4.156799,6.029400,3.982314,3.605331,4.707879,4.087529,4.635022,5.597247,3.889285,6.268631,
+6.304441,5.565396,5.380210,1.754372,5.449418)
+u.test<-function(x,mu,thegma)
+{  Se=thegma/sqrt(length(x))
+   u=(mean(x)-mu)/Se
+   p=pnorm(u)
+   list(u=u, p=p)
+}
+rst<-u.test(x,5,1)
+rst
+
+m<-qnorm(0.975)
+x <- seq(-4, 4, length=100)
+hx <- dnorm(x)
+plot(x,hx,"l")
+rug(c(-m,rst$u,0,m))
+
+```
+
+### hw or background
+Q:Children's IQ scorea are normally distributed with a mean of 100 and  standard deviation of 15. What proportion of Chridren are expected to have an IQ between 80 and 120?
+A:
+```{r}
+n <- pnorm(80,100,15)
+n
+pnorm(120,100,15)-pnorm(80,100,15)
+
+```
+#畫圖
+汽車廠商規定每加侖可走的里程不低於25mile，標準差2.4mile。
+```{r}
+u.test<-function(x,mu,thegma,alternative="twoside")
+{  Se=thegma/sqrt(length(x))
+   u <-(mean(x)-mu)/Se
+   p <-pnorm(u)
+   if(alternative=="twoside") p<-2*(1-pnorm(abs(u))) #u轉成正的可得兩邊面積
+   #1-pnorm(u)會得到最右邊白色，但因為是twoside可能在另一邊，所以乘2才對
+   else if (alternative=="less") p<-pnorm(u)
+   else p <- 1-pnorm(u)
+   list(u=u, p=p)
+}
+
+b=c(22,24,21,24,23,24,23,22,21,25)
+u.test(b, 25,2.4,"less")
+
+```
+
+#t.test()
+* 類似上題，但是不知道標準差
+* 單樣本
+* 要用均值檢定或是常態
+* alternative條件要大於或等於或小於
+```{r}
+
+x=c(502,496,510,508,506,498,512,497,515,503,510,506)
+t.test(x,mu=500,alternative ="greater") 
+#P-value小於0.025 範圍(0.025,0.075)
+var.test1<-function(x, sigma2){
+  n<-length(x)
+  S2=var(x)
+  df=n-1
+  chi2<-df*S2/sigma2;
+  #來自於標準常態分配的n個隨機變數，其平方和屬於chi2(n)，卡方自由度n的分配
+  P<-pchisq(chi2,df)
+  data.frame(var=S2, df=df, chisq2=chi2, P_value=P)
+}
+var.test1(x,400)
+```
+
+未知母體變異數：var.test()
+ex7.6兩批產品的變異數是否相同
+```{r}
+x1=c(24, 29, 39, 40, 32, 32, 31, 44, 37, 37, 50, 28, 24, 48, 25, 
+     40, 32, 34, 35, 41)
+x2=c(44, 34, 36, 38, 30, 30, 35, 38, 40, 46, 38, 35, 38, 36, 38, 
+     40, 34, 37, 40, 46)
+var.test(x1,x2)
+
+x1=c(48,47,44,45,46,47,43,47,42,48)
+x2=c(36,45,47,38,39,42,36,42,46,35)
+var.test(x1,x2)
+```
+
+#配對樣本的均值檢驗
+* 多使用於政策檢定、醫療檢定
+* 來自同一群人(樣本)檢定結果是否相同
+* 如果不是配對樣本，要檢驗均值
+
+
+* 如果不是配對樣本，要檢驗均值
+
+1）是否常態分配 
+2）是否同樣的方差，方差同值檢定：ks.test() lillie.test() var.test()
+
+* ex7.8服藥前後是否有差異
+```{r}
+before = c(94.5,101,110,103.5,97,88.5,96.5,101,104,116.5)
+after = c(85,89.5,101.5,96,86,80.5,87,93.5,93,102)
+t.test(before,after,paired=T)
+```
+#ks.test
+準確率較低
+```{r}
+ks.test(rnorm(100, mean = 5, sd = 3),"pnorm",mean=5,sd=3)#來自常態
+ks.test(rnorm(100, mean = 5, sd = 3),rnorm(100, mean = 5, sd = 3)) #來自同一母體
+```
+
+#只能檢定是否來自常態分配
+```{r}
+library(nortest)
+lillie.test(rnorm(100, mean = 5, sd = 3))
+```
+
+#畫區域圖
+```{r}
+x <- seq(0,40)
+y <- dchisq(x,df=10) 
+#卡方分配:x所對應的密度：dchisq(x,df,ncp=0)
+i <-x>=20
+plot(x,y,"l")
+polygon(c(x[i],20),c(y[i],0), col="red", border=NA) #將頭尾連在一起，才會畫出右邊紅色區塊
+#polygon給x跟y，他會將尾巴連結到開頭，在區域內畫圖
+```
+
+### 筆記
+
+配對樣本平均值檢定:t.test
+var,test(x1,x2) -> F檢定
+
+week1 <- c(45,35) #第一周喜歡跟不喜歡
+week2 <- c(56,47) #第二周喜歡跟不喜歡
+prop.test(week1,week2)
+
+prop.test(c(45,56), c(45+35,56+47)) #兩周內喜歡占母體的多少
+
+
+### 總結
+有母體平均或是母體方差(標準差)
+* z-test
+* chi-2
+
+沒有母體平均或是母體方差(標準差) 
+* t-test
+
+要比較兩者 
+* F-test, ex:var.test(x1,x2)
+
